@@ -1,7 +1,7 @@
 Vue.component("tweet-form", {
   data: function () {
     return ({
-      text: "hoge"
+      text: ""
     })
   },
   methods: {
