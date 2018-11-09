@@ -12,7 +12,7 @@ Vue.component("tweet-form", {
   },
   template: `
   <form v-on:submit.prevent="postTweet">
-    <textarea v-model="text"></textarea>
+    <textarea v-model="text" v-on:keyup.ctrl.enter="postTweet"></textarea>
     <button type="submit">Tweet</button>
   </form>`
 })
