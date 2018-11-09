@@ -38,15 +38,16 @@ Vue.component("card", {
     }
   },
   created: function () {
+    const lim = 99999;
     let tm = 1000, sum = 0;
     const countup = () => {
       const exp1 = Math.max(1.5, Math.random() * 2), exp2 = Math.max(1.5, Math.random() * 2);
-      this.liked += Math.max(1, Math.ceil(Math.pow(sum / 1000 + randInt(0, 5), exp1)));
-      this.retweeted += Math.max(2, Math.ceil(Math.pow(sum / 1000 + randInt(0, 5), exp2)));
+      this.liked = Math.min(lim, this.liked + Math.max(1, Math.ceil(Math.pow(sum / 1000 + randInt(0, 5), exp1))));
+      this.retweeted = Math.min(lim, this.liked + Math.max(1, Math.ceil(Math.pow(sum / 1000 + randInt(0, 5), exp2))));
       tm = 1000 + randInt(1000, 2000);
       sum += tm;
-      if (this.liked < 1000000 && this.retweeted < 1000000) {
-        setTimeout(countup, tm);
+      if (this.liked != lim || this.retweeted != lim) {
+        setTimeout(countup, tm / 25);
       }
     }
     setTimeout(countup, 2000 + randInt(0, 1000));
