@@ -7,6 +7,7 @@ Vue.component("tweet-form", {
   methods: {
     postTweet: function () {
       this.$emit("tw-post", this.text);
+      this.text = "";
     }
   },
   template: `
